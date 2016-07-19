@@ -4,7 +4,7 @@ Version: 1.0.0
 Release: 1
 License: public domain
 BuildRoot: /var/tmp/%{name}-buildroot
-Source: /home/chris/source/hello
+#Source: /home/chris/source/hello
 
 %description
 Hello world.
@@ -30,11 +30,19 @@ Hello world.
  echo "the post-uninstall sh commands"
 
 %prep
-rm -rf hello
+rm -rf *
 git clone /home/chris/source/hello hello
 mv hello/* .
 rm -rf hello
 
 %build
-ls
 make 
+mkdir -p opt/hello
+cp hello opt/hello
+pwd
+ls -R
+
+%install
+rm -rf $RPM_BUILD_ROOT
+mkdir $RPM_BUILD_ROOT
+cp -r opt $RPM_BUILD_ROOT

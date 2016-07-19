@@ -29,6 +29,8 @@ Hello world.
 %postun
  echo "the post-uninstall sh commands"
 
+%define _binary_payload w9.bzdio
+
 %prep
 rm -rf *
 git clone /home/chris/source/hello hello
